@@ -106,7 +106,34 @@ if($num>0){
     include_once 'paging.php';
 }
 
+// tell the user there are no products
+else{
+	echo "<div>No products found.</div>";
+}
+
 ?>
+
+<script>
+// JavaScript for deleting product
+$(document).on('click', '.delete-object', function(){
+
+	var id = $(this).attr('delete-id');
+	var q = confirm("Are you sure?");
+
+	if (q == true){
+
+		$.post('delete_product.php', {
+			object_id: id
+		}, function(data){
+			location.reload();
+		}).fail(function() {
+			alert('Unable to delete.');
+		});
+
+	}
+    return false;
+});
+</script>
 
 <?php
 
