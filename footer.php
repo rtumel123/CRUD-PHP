@@ -42,6 +42,7 @@ bootbox.confirm({
             $.post('delete_product.php', {
                 object_id: id
             }, function(data){
+                alert('Record deleted.');
                 location.reload();
             }).fail(function() {
                 alert('Unable to delete.');
